@@ -1,0 +1,20 @@
+.form__header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25px;
+}
+
+.form__header h1 {
+  color: #e21a1a;
+}
+
+.form__header button {
+  display: flex;
+  font-size: 15px;
+  gap: 20px;
+  color: #e21a1a;
+  border: none;
+  background: none;
+  align-items: center;
+  cursor: pointer;
+}

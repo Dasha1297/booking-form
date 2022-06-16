@@ -1,0 +1,12 @@
+.add__button {
+  display: flex;
+  font-size: 15px;
+  gap: 20px;
+  color: #e21a1a;
+  border: none;
+  background: none;
+  align-items: center;
+  cursor: pointer;
+  align-self: flex-end;
+  margin: 15px 0;
+}

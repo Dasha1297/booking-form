@@ -1,0 +1,13 @@
+.row {
+  display: block;
+  margin: 0 0 24px;
+  background-color: white;
+  border-radius: 5;
+  padding: 0 25px 40px 25px;
+}
+
+.row h2 {
+  font-weight: 600;
+  padding: 32px 0;
+  border-bottom: 1px solid #d9dbdf;
+}

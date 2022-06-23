@@ -1,10 +1,10 @@
 import "./App.css";
-import BookingForm from "./pages/BookingForm";
+import BookingPage from "./pages/BookingPage";
 
 function App() {
   return (
     <>
-      <BookingForm />
+      <BookingPage />
     </>
   );
 }

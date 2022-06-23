@@ -1,36 +1,50 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import { FieldProps } from "formik";
+import { Control, Controller, RegisterOptions } from "react-hook-form";
 
 import { style } from "./styled";
 
 type FormikSelectPropsType = {
   menuItems: Array<string>;
   label: string;
+  name: string;
+  control: Control<any>;
+  rules?: Exclude<
+    RegisterOptions,
+    "valueAsNumber" | "valueAsDate" | "setValueAs"
+  >;
 };
 
 export const FormikSelect = ({
   menuItems,
   label,
-  field,
-  form: { errors },
-}: FormikSelectPropsType & FieldProps) => {
+  name,
+  control,
+  rules,
+}: FormikSelectPropsType) => {
   return (
-    <FormControl fullWidth variant='outlined' sx={style}>
-      <InputLabel>{label}</InputLabel>
-      <Select
-        label={label}
-        name={field.name}
-        value={field.value || ""}
-        onChange={field.onChange}
-      >
-        {menuItems && menuItems.length > 0
-          ? menuItems.map((value) => (
-              <MenuItem value={value} key={value}>
-                {value}
-              </MenuItem>
-            ))
-          : null}
-      </Select>
-    </FormControl>
+    <Controller
+      name={name}
+      control={control}
+      rules={rules}
+      render={({ field, fieldState }) => (
+        <FormControl
+          fullWidth
+          variant='outlined'
+          sx={style}
+          error={fieldState.invalid}
+        >
+          <InputLabel>{label}</InputLabel>
+          <Select label={label} {...field} value={field.value || ""}>
+            {menuItems && menuItems.length > 0
+              ? menuItems.map((value) => (
+                  <MenuItem value={value} key={value}>
+                    {value}
+                  </MenuItem>
+                ))
+              : null}
+          </Select>
+        </FormControl>
+      )}
+    />
   );
 };

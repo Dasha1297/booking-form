@@ -1,12 +1,15 @@
-import { Field } from "formik";
-import style from "../../styles/style.module.css";
-import { FormikTextField } from "../UI/FormikTextField/FormikTextField";
+import FormikTextField from "../../UI/FormikTextField/FormikTextField";
+import { FormBlockProps } from "../../../pages/BookingPage";
 
 type ContactsPropType = {
   email: string;
   phone: string;
 };
-const Contacts = ({ email, phone }: ContactsPropType) => {
+const Contacts = ({
+  email,
+  phone,
+  control,
+}: ContactsPropType & FormBlockProps) => {
   return (
     <>
       <p>
@@ -14,13 +17,19 @@ const Contacts = ({ email, phone }: ContactsPropType) => {
         изменении условий перевозки, для экстренных сообщений, а также для
         информирования при оформлении УПДЖД для поездки в Калининград
       </p>
-      <div className={style.container}>
-        <Field
-          component={FormikTextField}
+      <div className='container'>
+        <FormikTextField
           name={email}
           label='Электронная почта'
+          control={control}
+          type='email'
         />
-        <Field component={FormikTextField} name={phone} label='Телефон' />
+        <FormikTextField
+          name={phone}
+          label='Телефон'
+          control={control}
+          type='tel'
+        />
       </div>
     </>
   );

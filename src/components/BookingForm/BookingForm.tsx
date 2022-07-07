@@ -32,9 +32,6 @@ const BookingForm = ({ values, submitCallback }: BookingFormPropsType) => {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      console.log("====================================");
-      console.log(data);
-      console.log("====================================");
       await submitCallback(data);
     } catch (error) {
       console.log(error);
@@ -45,7 +42,7 @@ const BookingForm = ({ values, submitCallback }: BookingFormPropsType) => {
     <form onSubmit={onSubmit} className='form'>
       {fields.map((passenger, index) => {
         return (
-          <div key={index}>
+          <div key={passenger.id}>
             <FormHeader number={index + 1} handleClick={() => remove(index)} />
             <RowBlock title='Основная информация'>
               <BasikInformation
